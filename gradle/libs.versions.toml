@@ -1,0 +1,20 @@
+[versions]
+activity-compose = "1.7.2"
+agp = "8.2.0-alpha13"
+androidx-core-ktx = "1.10.1"
+coil-compose = "2.4.0"
+fuel-kotlinx-serialization = "3.0.0-alpha1"
+kotlinx-datetime = "0.4.0"
+jetbrains-compose = "1.5.0-dev1114"
+
+[libraries]
+androidx-activity-compose = { module = "androidx.activity:activity-compose", version.ref = "activity-compose" }
+androidx-core-ktx = { module = "androidx.core:core-ktx", version.ref = "androidx-core-ktx" }
+coil-compose = { module = "io.coil-kt:coil-compose", version.ref = "coil-compose" }
+fuel-kotlinx-serialization = { module = "com.github.kittinunf.fuel:fuel-kotlinx-serialization", version.ref = "fuel-kotlinx-serialization" }
+kotlinx-datetime = { module = "org.jetbrains.kotlinx:kotlinx-datetime", version.ref = "kotlinx-datetime" }
+
+[plugins]
+androidApplication = { id = "com.android.application", version.ref = "agp" }
+androidLibrary = { id = "com.android.library", version.ref = "agp" }
+jetbrainsCompose = { id = "org.jetbrains.compose", version.ref = "jetbrains-compose" }
