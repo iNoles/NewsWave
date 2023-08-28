@@ -5,7 +5,7 @@ androidx-core-ktx = "1.10.1"
 coil-compose = "2.4.0"
 fuel-kotlinx-serialization = "3.0.0-alpha1"
 kotlinx-datetime = "0.4.0"
-jetbrains-compose = "1.5.0-rc06"
+jetbrains-compose = "1.5.0"
 
 [libraries]
 androidx-activity-compose = { group = "androidx.activity", name = "activity-compose", version.ref = "activity-compose" }
