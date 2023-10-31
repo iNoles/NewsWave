@@ -5,7 +5,7 @@ import java.util.Properties
 plugins {
     kotlin("multiplatform")
     kotlin("native.cocoapods")
-    kotlin("plugin.serialization") version "1.9.10"
+    kotlin("plugin.serialization") version "1.9.20"
     id("com.android.library")
     id("org.jetbrains.compose")
     id("com.github.gmazzo.buildconfig") version "4.1.2"
