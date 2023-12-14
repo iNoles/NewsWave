@@ -1,5 +1,5 @@
 [versions]
-activity-compose = "1.8.1"
+activity-compose = "1.8.2"
 agp = "8.3.0-alpha18"
 androidx-core-ktx = "1.12.0"
 coil-compose = "2.5.0"
