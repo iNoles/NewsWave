@@ -1,6 +1,6 @@
 [versions]
 activity-compose = "1.8.2"
-agp = "8.3.0-alpha18"
+agp = "8.4.0-alpha02"
 androidx-core-ktx = "1.12.0"
 coil-compose = "2.5.0"
 fuel-kotlinx-serialization = "3.0.0-alpha1"
@@ -16,5 +16,4 @@ kotlinx-datetime = { group = "org.jetbrains.kotlinx", name = "kotlinx-datetime",
 
 [plugins]
 androidApplication = { id = "com.android.application", version.ref = "agp" }
-androidLibrary = { id = "com.android.library", version.ref = "agp" }
 jetbrainsCompose = { id = "org.jetbrains.compose", version.ref = "jetbrains-compose" }
