@@ -7,7 +7,7 @@ plugins {
     kotlin("plugin.serialization") version "1.9.21"
     id("com.android.application")
     id("org.jetbrains.compose")
-    id("com.github.gmazzo.buildconfig") version "5.3.3"
+    id("com.github.gmazzo.buildconfig") version "5.3.5"
 }
 
 kotlin {
