@@ -72,18 +72,20 @@ fun NewsList(selectedArticle: MutableState<News.Article?>) {
     val tabState = remember { mutableStateOf(TabState.GENERAL) }
     val scroll = rememberScrollState()
     val platformContext = getPlatformContext()
-    val newsState = fetchAllHeadlines(
-        source = tabState.value.name.lowercase(),
-        platformContext = platformContext
-    ).collectAsState(emptyList())
+    val newsState =
+        fetchAllHeadlines(
+            source = tabState.value.name.lowercase(),
+            platformContext = platformContext,
+        ).collectAsState(emptyList())
     Scaffold(
-        topBar = { CenterAlignedTopAppBar(title = { Text("News") }) }
+        topBar = { CenterAlignedTopAppBar(title = { Text("News") }) },
     ) {
         Column(
-            modifier = Modifier
-                .fillMaxSize()
-                .padding(it)
-                .background(color = MaterialTheme.colorScheme.surfaceVariant)
+            modifier =
+                Modifier
+                    .fillMaxSize()
+                    .padding(it)
+                    .background(color = MaterialTheme.colorScheme.surfaceVariant),
         ) {
             FilterTabs(tabState = tabState, scrollState = scroll)
             ListBody(newsState = newsState, selectedArticle = selectedArticle)
@@ -92,7 +94,10 @@ fun NewsList(selectedArticle: MutableState<News.Article?>) {
 }
 
 @Composable
-fun FilterTabs(tabState: MutableState<TabState>, scrollState: ScrollState) {
+fun FilterTabs(
+    tabState: MutableState<TabState>,
+    scrollState: ScrollState,
+) {
     val coroutineScope = rememberCoroutineScope()
     ScrollableTabRow(selectedTabIndex = TabState.values().toList().indexOf(tabState.value)) {
         TabState.values().forEach {
@@ -104,7 +109,7 @@ fun FilterTabs(tabState: MutableState<TabState>, scrollState: ScrollState) {
                     coroutineScope.launch {
                         scrollState.scrollTo(0)
                     }
-                }
+                },
             )
         }
     }
@@ -113,7 +118,7 @@ fun FilterTabs(tabState: MutableState<TabState>, scrollState: ScrollState) {
 @Composable
 fun ListBody(
     newsState: State<List<News.Article>?>,
-    selectedArticle: MutableState<News.Article?>
+    selectedArticle: MutableState<News.Article?>,
 ) {
     LazyColumn {
         items(newsState.value ?: emptyList()) { article ->

@@ -7,5 +7,5 @@ enum class TabState {
     HEALTH,
     SCIENCE,
     SPORTS,
-    TECHNOLOGY
+    TECHNOLOGY,
 }

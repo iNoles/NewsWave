@@ -33,12 +33,14 @@ fun FetchImage(url: String): ImageBitmap? {
 }
 
 @OptIn(ExperimentalForeignApi::class)
-fun NSData.toByteArray(): ByteArray = ByteArray(this@toByteArray.length.toInt()).apply {
-    usePinned {
-        memcpy(it.addressOf(0), this@toByteArray.bytes, this@toByteArray.length)
+fun NSData.toByteArray(): ByteArray =
+    ByteArray(this@toByteArray.length.toInt()).apply {
+        usePinned {
+            memcpy(it.addressOf(0), this@toByteArray.bytes, this@toByteArray.length)
+        }
     }
-}
 
-suspend fun loadFullImage(source: String): ByteArray? = withContext(Dispatchers.Unconfined) {
-    return@withContext NSData.dataWithContentsOfURL(URLWithString(source)!!)?.toByteArray()
-}
+suspend fun loadFullImage(source: String): ByteArray? =
+    withContext(Dispatchers.Unconfined) {
+        return@withContext NSData.dataWithContentsOfURL(URLWithString(source)!!)?.toByteArray()
+    }

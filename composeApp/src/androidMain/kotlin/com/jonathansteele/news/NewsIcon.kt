@@ -7,12 +7,15 @@ import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImage
 
 @Composable
-actual fun NewsIcon(article: News.Article, modifier: Modifier) {
+actual fun NewsIcon(
+    article: News.Article,
+    modifier: Modifier,
+) {
     article.urlToImage?.let {
         AsyncImage(
             model = it,
             contentDescription = null,
-            modifier = modifier.size(64.dp)
+            modifier = modifier.size(64.dp),
         )
     }
 }

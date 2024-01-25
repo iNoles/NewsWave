@@ -11,22 +11,27 @@ import platform.UIKit.UIApplication
 import platform.UIKit.UIWindow
 
 @Composable
-actual fun ShareURL(article: News.Article, platformContext: PlatformContext) {
+actual fun ShareURL(
+    article: News.Article,
+    platformContext: PlatformContext,
+) {
     Icon(
         imageVector = Icons.Default.Share,
         contentDescription = "Share",
-        modifier = Modifier.clickable {
-            val window = UIApplication.sharedApplication.windows.last() as? UIWindow
-            val currentViewController = window?.rootViewController
-            val activityViewController = UIActivityViewController(
-                activityItems = listOf(article.url, article.title),
-                applicationActivities = null
-            )
-            currentViewController?.presentViewController(
-                viewControllerToPresent = activityViewController,
-                animated = true,
-                completion = null,
-            )
-        }
+        modifier =
+            Modifier.clickable {
+                val window = UIApplication.sharedApplication.windows.last() as? UIWindow
+                val currentViewController = window?.rootViewController
+                val activityViewController =
+                    UIActivityViewController(
+                        activityItems = listOf(article.url, article.title),
+                        applicationActivities = null,
+                    )
+                currentViewController?.presentViewController(
+                    viewControllerToPresent = activityViewController,
+                    animated = true,
+                    completion = null,
+                )
+            },
     )
 }

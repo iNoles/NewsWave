@@ -23,7 +23,7 @@ kotlin {
     iosX64()
     iosArm64()
     iosSimulatorArm64()
-    
+
     sourceSets {
         val desktopMain by getting
 
@@ -52,9 +52,10 @@ kotlin {
 }
 
 buildConfig {
-    val prop = Properties().apply {
-        load(FileInputStream(File(rootProject.rootDir, "local.properties")))
-    }
+    val prop =
+        Properties().apply {
+            load(FileInputStream(File(rootProject.rootDir, "local.properties")))
+        }
     packageName("com.jonathansteele.news")
     useKotlinOutput()
     buildConfigField("String", "NEWS_API_KEY", prop.getProperty("apikey"))

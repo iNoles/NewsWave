@@ -6,7 +6,6 @@ import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
-import androidx.compose.material.icons.filled.Share
 import androidx.compose.material3.CenterAlignedTopAppBar
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
@@ -39,7 +38,7 @@ fun NewsDetailView(
                         }) {
                             Icon(
                                 imageVector = Icons.Filled.ArrowBack,
-                                contentDescription = "Pop Back Navigation Stack"
+                                contentDescription = "Pop Back Navigation Stack",
                             )
                         }
                     }
@@ -50,9 +49,8 @@ fun NewsDetailView(
                     }
                 },
                 title = { Text("") },
-
             )
-        }
+        },
     ) {
         NewsDetailContent(article = article, modifier = Modifier.padding(it))
     }
@@ -62,17 +60,21 @@ fun NewsDetailView(
 fun NewsDetailContent(
     article: News.Article?,
     modifier: Modifier = Modifier,
-    iconModifier: Modifier = Modifier
+    iconModifier: Modifier = Modifier,
 ) {
     article?.let {
         Column(
-            modifier = modifier
-                .fillMaxWidth()
-                .padding(16.dp)
+            modifier =
+                modifier
+                    .fillMaxWidth()
+                    .padding(16.dp),
         ) {
-            NewsIcon(article, iconModifier.heightIn(min = 180.dp)
-                .fillMaxWidth()
-                .clip(shape = MaterialTheme.shapes.medium))
+            NewsIcon(
+                article,
+                iconModifier.heightIn(min = 180.dp)
+                    .fillMaxWidth()
+                    .clip(shape = MaterialTheme.shapes.medium),
+            )
             Text(article.title)
             Text("By ${article.author}")
             NewsDate(article.publishedAt)

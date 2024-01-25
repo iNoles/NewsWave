@@ -14,20 +14,21 @@ fun NewsItem(
     article: News.Article,
     modifier: Modifier = Modifier,
     iconModifier: Modifier = Modifier,
-    newsSelected: (person: News.Article) -> Unit
+    newsSelected: (person: News.Article) -> Unit,
 ) {
     Card(modifier.padding(16.dp)) {
         ListItem(
-            modifier = modifier.clickable {
-                newsSelected(article)
-            },
+            modifier =
+                modifier.clickable {
+                    newsSelected(article)
+                },
             leadingContent = {
                 NewsIcon(article, iconModifier)
             },
             headlineContent = { Text(article.title) },
             supportingContent = {
                 article.description?.let { Text(it) }
-            }
+            },
         )
     }
 }
