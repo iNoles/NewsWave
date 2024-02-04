@@ -20,7 +20,8 @@ actual fun fetchAllHeadlines(
                 Cache(
                     directory = platformContext.androidContext.cacheDir,
                     // $0.05 worth of phone storage in 2020
-                    maxSize = 50L * 1024L * 1024L, // 50 MiB
+                    maxSize = 50L * 1024L * 1024L,
+                    // 50 MiB
                 ),
             ).build()
     val fuel = FuelBuilder().config(okhttp).build()

@@ -99,8 +99,8 @@ fun FilterTabs(
     scrollState: ScrollState,
 ) {
     val coroutineScope = rememberCoroutineScope()
-    ScrollableTabRow(selectedTabIndex = TabState.values().toList().indexOf(tabState.value)) {
-        TabState.values().forEach {
+    ScrollableTabRow(selectedTabIndex = TabState.entries.indexOf(tabState.value)) {
+        TabState.entries.forEach {
             Tab(
                 text = { Text(it.name) },
                 selected = tabState.value == it,
