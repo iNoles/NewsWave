@@ -28,13 +28,13 @@ kotlin {
             }
         }
     }
-    
+
     jvm("desktop")
-    
+
     listOf(
         iosX64(),
         iosArm64(),
-        iosSimulatorArm64()
+        iosSimulatorArm64(),
     ).forEach { iosTarget ->
         iosTarget.binaries.framework {
             baseName = "ComposeApp"
@@ -42,12 +42,12 @@ kotlin {
             binaryOption("bundleId", "com.jonathansteele.news")
         }
     }
-    
+
     sourceSets {
         val desktopMain by getting
-        
+
         androidMain.dependencies {
-            //implementation(libs.compose.ui.tooling.preview)
+            // implementation(libs.compose.ui.tooling.preview)
             implementation(libs.androidx.activity.compose)
             implementation(libs.coil.compose)
         }
@@ -66,11 +66,11 @@ kotlin {
     }
 }
 
-tasks.withType<AndroidLintAnalysisTask>{
+tasks.withType<AndroidLintAnalysisTask> {
     dependsOn("copyFontsToAndroidAssets")
 }
 
-tasks.withType<LintModelWriterTask>{
+tasks.withType<LintModelWriterTask> {
     dependsOn("copyFontsToAndroidAssets")
 }
 
@@ -138,7 +138,7 @@ buildkonfig {
         buildConfigField(
             FieldSpec.Type.STRING,
             "NEWS_API_KEY",
-            localProperties["news_api_key"]?.toString() ?: ""
+            localProperties["news_api_key"]?.toString() ?: "",
         )
     }
 }
