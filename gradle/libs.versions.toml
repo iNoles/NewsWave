@@ -1,19 +1,26 @@
 [versions]
-activity-compose = "1.8.2"
-agp = "8.4.0-alpha09"
+agp = "8.2.2"
+androidx-activityCompose = "1.8.2"
 androidx-core-ktx = "1.12.0"
+compose-plugin = "1.6.0-beta02"
+kotlin = "1.9.22"
 coil-compose = "2.5.0"
 fuel-kotlinx-serialization = "3.0.0-alpha1"
 kotlinx-datetime = "0.5.0"
-jetbrains-compose = "1.5.12"
+buildkonfig = "0.15.1"
 
 [libraries]
-androidx-activity-compose = { group = "androidx.activity", name = "activity-compose", version.ref = "activity-compose" }
+kotlin-test = { module = "org.jetbrains.kotlin:kotlin-test", version.ref = "kotlin" }
+kotlin-test-junit = { module = "org.jetbrains.kotlin:kotlin-test-junit", version.ref = "kotlin" }
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "androidx-core-ktx" }
+androidx-activity-compose = { module = "androidx.activity:activity-compose", version.ref = "androidx-activityCompose" }
 coil-compose = { group = "io.coil-kt", name = "coil-compose", version.ref = "coil-compose" }
 fuel-kotlinx-serialization = { group = "com.github.kittinunf.fuel", name = "fuel-kotlinx-serialization", version.ref = "fuel-kotlinx-serialization" }
 kotlinx-datetime = { group = "org.jetbrains.kotlinx", name = "kotlinx-datetime", version.ref = "kotlinx-datetime" }
 
 [plugins]
 androidApplication = { id = "com.android.application", version.ref = "agp" }
-jetbrainsCompose = { id = "org.jetbrains.compose", version.ref = "jetbrains-compose" }
+jetbrainsCompose = { id = "org.jetbrains.compose", version.ref = "compose-plugin" }
+kotlinMultiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref = "kotlin" }
+kotlinPluginSerialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
+buildkonfig = { id = "com.codingfeline.buildkonfig", version.ref = "buildkonfig" }

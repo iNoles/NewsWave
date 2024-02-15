@@ -1,16 +1,26 @@
+import com.android.build.gradle.internal.lint.AndroidLintAnalysisTask
+import com.android.build.gradle.internal.lint.LintModelWriterTask
+import com.codingfeline.buildkonfig.compiler.FieldSpec
 import org.jetbrains.compose.desktop.application.dsl.TargetFormat
-import java.io.FileInputStream
 import java.util.Properties
 
 plugins {
-    kotlin("multiplatform")
-    kotlin("plugin.serialization") version "1.9.22"
-    id("com.android.application")
-    id("org.jetbrains.compose")
-    id("com.github.gmazzo.buildconfig") version "5.3.5"
+    alias(libs.plugins.kotlinMultiplatform)
+    alias(libs.plugins.androidApplication)
+    alias(libs.plugins.jetbrainsCompose)
+    alias(libs.plugins.kotlinPluginSerialization)
+    alias(libs.plugins.buildkonfig)
 }
 
 kotlin {
+    targets.all {
+        compilations.all {
+            kotlinOptions {
+                freeCompilerArgs = listOf("-Xexpect-actual-classes")
+            }
+        }
+    }
+
     androidTarget {
         compilations.all {
             kotlinOptions {
@@ -18,54 +28,64 @@ kotlin {
             }
         }
     }
-
+    
     jvm("desktop")
-    iosX64()
-    iosArm64()
-    iosSimulatorArm64()
-
+    
+    listOf(
+        iosX64(),
+        iosArm64(),
+        iosSimulatorArm64()
+    ).forEach { iosTarget ->
+        iosTarget.binaries.framework {
+            baseName = "ComposeApp"
+            isStatic = false
+            binaryOption("bundleId", "com.jonathansteele.news")
+        }
+    }
+    
     sourceSets {
         val desktopMain by getting
-
+        
+        androidMain.dependencies {
+            //implementation(libs.compose.ui.tooling.preview)
+            implementation(libs.androidx.activity.compose)
+            implementation(libs.coil.compose)
+        }
         commonMain.dependencies {
             implementation(compose.runtime)
             implementation(compose.foundation)
             implementation(compose.material3)
-            @OptIn(org.jetbrains.compose.ExperimentalComposeLibrary::class)
+            implementation(compose.ui)
             implementation(compose.components.resources)
             implementation(libs.kotlinx.datetime)
             implementation(libs.fuel.kotlinx.serialization)
         }
-        commonTest.dependencies {
-            implementation(kotlin("test"))
-        }
-        androidMain.dependencies {
-            implementation(libs.androidx.activity.compose)
-            implementation(libs.androidx.core.ktx)
-            implementation(libs.coil.compose)
-        }
         desktopMain.dependencies {
-            implementation(compose.desktop.common)
             implementation(compose.desktop.currentOs)
         }
     }
 }
 
-buildConfig {
-    val prop =
-        Properties().apply {
-            load(FileInputStream(File(rootProject.rootDir, "local.properties")))
-        }
-    packageName("com.jonathansteele.news")
-    useKotlinOutput()
-    buildConfigField("String", "NEWS_API_KEY", prop.getProperty("apikey"))
+tasks.withType<AndroidLintAnalysisTask>{
+    dependsOn("copyFontsToAndroidAssets")
+}
+
+tasks.withType<LintModelWriterTask>{
+    dependsOn("copyFontsToAndroidAssets")
+}
+
+task("testClasses").doLast {
+    println("This is a dummy testClasses task")
 }
 
 android {
-    namespace = "com.jonathansteele.news.android"
+    namespace = "com.jonathansteele.news"
     compileSdk = 34
+
+    sourceSets["main"].manifest.srcFile("src/androidMain/AndroidManifest.xml")
+
     defaultConfig {
-        applicationId = "com.jonathansteele.news.android"
+        applicationId = "com.jonathansteele.news"
         minSdk = 26
         targetSdk = 34
         versionCode = 1
@@ -85,17 +105,44 @@ android {
         sourceCompatibility = JavaVersion.VERSION_11
         targetCompatibility = JavaVersion.VERSION_11
     }
+    /*dependencies {
+        debugImplementation(libs.compose.ui.tooling)
+    }*/
 }
 
 compose.desktop {
     application {
-        mainClass = "com.jonathansteele.news.desktop.MainKt"
+        mainClass = "MainKt"
 
         nativeDistributions {
             targetFormats(TargetFormat.Dmg, TargetFormat.Msi, TargetFormat.Deb)
-            packageName = "News"
+            packageName = "com.jonathansteele.news"
             packageVersion = "1.0.0"
-            appResourcesRootDir.set(project.layout.projectDirectory.dir("resources"))
         }
     }
+}
+
+buildkonfig {
+    packageName = "com.jonathansteele.news"
+
+    val localPropsFile = rootProject.file("local.properties")
+    val localProperties = Properties()
+    if (localPropsFile.exists()) {
+        runCatching {
+            localProperties.load(localPropsFile.inputStream())
+        }.getOrElse {
+            it.printStackTrace()
+        }
+    }
+    defaultConfigs {
+        buildConfigField(
+            FieldSpec.Type.STRING,
+            "NEWS_API_KEY",
+            localProperties["news_api_key"]?.toString() ?: ""
+        )
+    }
+}
+
+compose.experimental {
+    web.application {}
 }

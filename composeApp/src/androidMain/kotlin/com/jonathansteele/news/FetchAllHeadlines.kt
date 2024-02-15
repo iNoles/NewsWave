@@ -31,7 +31,7 @@ actual fun fetchAllHeadlines(
             .parameters(
                 listOf(
                     "country" to "us",
-                    "apiKey" to BuildConfig.NEWS_API_KEY,
+                    "apiKey" to BuildKonfig.NEWS_API_KEY,
                     "category" to source,
                 ),
             )
