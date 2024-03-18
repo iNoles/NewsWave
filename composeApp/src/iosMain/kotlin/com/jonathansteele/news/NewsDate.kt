@@ -16,6 +16,5 @@ private val mediumDateFormatter by lazy {
     formatter
 }
 
-actual fun formattingDate(instant: Instant): String {
-    return mediumDateFormatter.stringFromDate(instant.toNSDate())
-}
+actual fun formattingDate(instant: Instant): String =
+    mediumDateFormatter.stringFromDate(instant.toNSDate())

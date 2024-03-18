@@ -1,17 +1,21 @@
 package com.jonathansteele.news
 
+import androidx.compose.runtime.Immutable
+import kotlinx.collections.immutable.ImmutableList
 import kotlinx.datetime.Instant
 import kotlinx.serialization.Serializable
 
 @Serializable
+@Immutable
 data class News(
-    val articles: List<Article>,
+    val articles: ImmutableList<Article>,
     val status: String,
     // ok
     val totalResults: Int,
     // 34
 ) {
     @Serializable
+    @Immutable
     data class Article(
         val author: String?,
         // Robyn Dixon, Mary Ilyushina

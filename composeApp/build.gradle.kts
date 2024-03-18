@@ -1,5 +1,3 @@
-import com.android.build.gradle.internal.lint.AndroidLintAnalysisTask
-import com.android.build.gradle.internal.lint.LintModelWriterTask
 import com.codingfeline.buildkonfig.compiler.FieldSpec
 import org.jetbrains.compose.desktop.application.dsl.TargetFormat
 import java.util.Properties
@@ -59,6 +57,7 @@ kotlin {
             implementation(compose.components.resources)
             implementation(libs.kotlinx.datetime)
             implementation(libs.fuel.kotlinx.serialization)
+            implementation(libs.kotlinx.collections.immutable)
         }
         desktopMain.dependencies {
             implementation(compose.desktop.currentOs)
@@ -66,13 +65,6 @@ kotlin {
     }
 }
 
-tasks.withType<AndroidLintAnalysisTask> {
-    dependsOn("copyFontsToAndroidAssets")
-}
-
-tasks.withType<LintModelWriterTask> {
-    dependsOn("copyFontsToAndroidAssets")
-}
 
 task("testClasses").doLast {
     println("This is a dummy testClasses task")
