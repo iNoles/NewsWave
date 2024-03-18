@@ -12,5 +12,4 @@ private val mediumDateFormatter by lazy {
         .withZone(ZoneId.systemDefault())
 }
 
-actual fun formattingDate(instant: Instant): String =
-    mediumDateFormatter.format(instant.toJavaInstant())
+actual fun formattingDate(instant: Instant): String = mediumDateFormatter.format(instant.toJavaInstant())

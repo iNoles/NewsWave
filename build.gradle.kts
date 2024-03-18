@@ -8,7 +8,6 @@ plugins {
     alias(libs.plugins.kotlinMultiplatform) apply false
 }
 
-
 allprojects {
     tasks.withType<KotlinCompilationTask<*>>().configureEach {
         compilerOptions {
@@ -17,12 +16,12 @@ allprojects {
             freeCompilerArgs.addAll(
                 "-P",
                 "plugin:androidx.compose.compiler.plugins.kotlin:reportsDestination=" +
-                        layout.buildDirectory.asFile.get().absolutePath + "/compose_metrics",
+                    layout.buildDirectory.asFile.get().absolutePath + "/compose_metrics",
             )
             freeCompilerArgs.addAll(
                 "-P",
                 "plugin:androidx.compose.compiler.plugins.kotlin:metricsDestination=" +
-                        layout.buildDirectory.asFile.get().absolutePath + "/compose_metrics",
+                    layout.buildDirectory.asFile.get().absolutePath + "/compose_metrics",
             )
         }
     }

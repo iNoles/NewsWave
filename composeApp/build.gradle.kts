@@ -65,7 +65,6 @@ kotlin {
     }
 }
 
-
 task("testClasses").doLast {
     println("This is a dummy testClasses task")
 }
