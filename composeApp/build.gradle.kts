@@ -1,6 +1,7 @@
 import com.codingfeline.buildkonfig.compiler.FieldSpec
 import org.jetbrains.compose.desktop.application.dsl.TargetFormat
 import java.util.Properties
+import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 
 plugins {
     alias(libs.plugins.kotlinMultiplatform)
@@ -8,21 +9,26 @@ plugins {
     alias(libs.plugins.jetbrainsCompose)
     alias(libs.plugins.kotlinPluginSerialization)
     alias(libs.plugins.buildkonfig)
+    alias(libs.plugins.compose.compiler)
 }
 
 kotlin {
     targets.all {
         compilations.all {
-            kotlinOptions {
-                freeCompilerArgs = listOf("-Xexpect-actual-classes")
+            compileTaskProvider.configure {
+                compilerOptions {
+                    freeCompilerArgs = listOf("-Xexpect-actual-classes")
+                }
             }
         }
     }
 
     androidTarget {
         compilations.all {
-            kotlinOptions {
-                jvmTarget = "11"
+            compileTaskProvider.configure {
+                compilerOptions {
+                    jvmTarget.set(JvmTarget.JVM_11)
+                }
             }
         }
     }
@@ -63,10 +69,6 @@ kotlin {
             implementation(compose.desktop.currentOs)
         }
     }
-}
-
-task("testClasses").doLast {
-    println("This is a dummy testClasses task")
 }
 
 android {
