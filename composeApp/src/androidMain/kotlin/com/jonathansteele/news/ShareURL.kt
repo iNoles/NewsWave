@@ -7,12 +7,11 @@ import androidx.compose.material.icons.filled.Share
 import androidx.compose.material3.Icon
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import coil3.compose.LocalPlatformContext
 
 @Composable
-actual fun ShareURL(
-    article: News.Article,
-    platformContext: PlatformContext,
-) {
+actual fun ShareURL(article: News.Article) {
+    val context = LocalPlatformContext.current
     Icon(
         imageVector = Icons.Default.Share,
         contentDescription = "Share",
@@ -25,7 +24,7 @@ actual fun ShareURL(
                         putExtra(Intent.EXTRA_SUBJECT, article.title)
                         putExtra(Intent.EXTRA_TEXT, article.url)
                     }
-                platformContext.androidContext.startActivity(Intent.createChooser(shareIntent, null))
+                context.startActivity(Intent.createChooser(shareIntent, null))
             },
     )
 }

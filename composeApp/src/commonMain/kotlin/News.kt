@@ -8,11 +8,10 @@ import kotlinx.serialization.Serializable
 @Serializable
 @Immutable
 data class News(
-    val articles: ImmutableList<Article>,
-    val status: String,
-    // ok
-    val totalResults: Int,
-    // 34
+    @Serializable(PersistentListSerializer::class)
+    val articles: ImmutableList<Article>?,
+    val status: String, // ok
+    val totalResults: Int?, // 34
 ) {
     @Serializable
     @Immutable

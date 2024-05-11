@@ -11,10 +11,7 @@ import platform.UIKit.UIApplication
 import platform.UIKit.UIWindow
 
 @Composable
-actual fun ShareURL(
-    article: News.Article,
-    platformContext: PlatformContext,
-) {
+actual fun ShareURL(article: News.Article) {
     Icon(
         imageVector = Icons.Default.Share,
         contentDescription = "Share",

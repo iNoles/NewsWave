@@ -27,7 +27,6 @@ fun NewsDetailView(
     selectedArticle: MutableState<News.Article?>,
     navigationEnabled: Boolean,
 ) {
-    val platformContext = getPlatformContext()
     Scaffold(
         topBar = {
             CenterAlignedTopAppBar(
@@ -45,7 +44,7 @@ fun NewsDetailView(
                 },
                 actions = {
                     if (article != null) {
-                        ShareURL(article, platformContext)
+                        ShareURL(article)
                     }
                 },
                 title = { Text("") },

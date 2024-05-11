@@ -53,7 +53,6 @@ kotlin {
         androidMain.dependencies {
             // implementation(libs.compose.ui.tooling.preview)
             implementation(libs.androidx.activity.compose)
-            implementation(libs.coil.compose)
         }
         commonMain.dependencies {
             implementation(compose.runtime)
@@ -64,6 +63,8 @@ kotlin {
             implementation(libs.kotlinx.datetime)
             implementation(libs.fuel.kotlinx.serialization)
             implementation(libs.kotlinx.collections.immutable)
+            implementation(libs.coil)
+            implementation(libs.coil.network)
         }
         desktopMain.dependencies {
             implementation(compose.desktop.currentOs)
@@ -105,7 +106,7 @@ android {
 
 compose.desktop {
     application {
-        mainClass = "MainKt"
+        mainClass = "com.jonathansteele.news.MainKt"
 
         nativeDistributions {
             targetFormats(TargetFormat.Dmg, TargetFormat.Msi, TargetFormat.Deb)

@@ -28,6 +28,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import kotlinx.collections.immutable.persistentListOf
 import kotlinx.coroutines.launch
 
 @Composable
@@ -71,12 +72,8 @@ fun TwoColumnsLayout(selectedArticle: MutableState<News.Article?>) {
 fun NewsList(selectedArticle: MutableState<News.Article?>) {
     val tabState = remember { mutableStateOf(TabState.GENERAL) }
     val scroll = rememberScrollState()
-    val platformContext = getPlatformContext()
     val newsState =
-        fetchAllHeadlines(
-            source = tabState.value.name.lowercase(),
-            platformContext = platformContext,
-        ).collectAsState(emptyList())
+        fetchAllHeadlines(source = tabState.value.name.lowercase()).collectAsState(null)
     Scaffold(
         topBar = { CenterAlignedTopAppBar(title = { Text("News") }) },
     ) {
@@ -117,14 +114,16 @@ fun FilterTabs(
 
 @Composable
 fun ListBody(
-    newsState: State<List<News.Article>?>,
+    newsState: State<News?>,
     selectedArticle: MutableState<News.Article?>,
 ) {
+    val news = newsState.value?.articles ?: persistentListOf()
     LazyColumn {
-        items(newsState.value ?: emptyList()) { article ->
+        items(news) { article ->
             NewsItem(article) {
                 selectedArticle.value = it
             }
         }
     }
 }
+
