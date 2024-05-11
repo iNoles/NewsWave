@@ -6,7 +6,9 @@ import coil3.util.FetcherServiceLoaderTarget
 
 @OptIn(InternalCoilApi::class)
 internal class FuelNetworkFetcherServiceLoaderTarget : FetcherServiceLoaderTarget<Uri> {
-    override fun factory() = FuelNetworkFetcherFactory()
+    override fun factory() = fuelNetworkFetcherFactory()
+
     override fun type() = Uri::class
+
     override fun priority() = 1 // FuelNetworkFetcher takes precedence over KtorNetworkFetcher.
 }

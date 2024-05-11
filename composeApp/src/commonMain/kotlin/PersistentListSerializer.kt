@@ -15,10 +15,16 @@ class PersistentListSerializer(private val dataSerializer: KSerializer<News.Arti
         @ExperimentalSerializationApi
         override val serialName: String = "kotlinx.collections.immutable.ImmutableList"
     }
+
     override val descriptor: SerialDescriptor = ImmutableListDescriptor()
-    override fun serialize(encoder: Encoder, value: ImmutableList<News.Article>) {
+
+    override fun serialize(
+        encoder: Encoder,
+        value: ImmutableList<News.Article>,
+    ) {
         return ListSerializer(dataSerializer).serialize(encoder, value.toList())
     }
+
     override fun deserialize(decoder: Decoder): ImmutableList<News.Article> {
         return ListSerializer(dataSerializer).deserialize(decoder).toImmutableList()
     }

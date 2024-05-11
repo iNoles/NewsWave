@@ -19,12 +19,13 @@ internal value class FuelNetworkClient(
     override suspend fun <T> executeRequest(
         request: NetworkRequest,
         block: suspend (response: NetworkResponse) -> T,
-    ) : T {
-        val method = fuel.method(
-            url = request.url,
-            method = request.method,
-            body = request.body.toString()
-        )
+    ): T {
+        val method =
+            fuel.method(
+                url = request.url,
+                method = request.method,
+                body = request.body.toString(),
+            )
         return block(method.toNetworkResponse(request))
     }
 }
@@ -34,5 +35,5 @@ fun HttpResponse.toNetworkResponse(request: NetworkRequest) =
     NetworkResponse(
         request = request,
         code = statusCode,
-        body = NetworkResponseBody(Buffer().apply { writeUtf8(body) } )
+        body = NetworkResponseBody(Buffer().apply { writeUtf8(body) }),
     )
