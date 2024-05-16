@@ -136,7 +136,3 @@ buildkonfig {
         )
     }
 }
-
-compose.experimental {
-    web.application {}
-}
