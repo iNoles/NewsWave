@@ -8,5 +8,5 @@ import kotlinx.serialization.json.Json
 actual fun HttpResponse.json(json: Json): Result<News?, Throwable> =
     toJson(
         json = json,
-        deserializationStrategy = News.serializer()
+        deserializationStrategy = News.serializer(),
     )
