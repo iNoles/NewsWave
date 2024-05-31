@@ -1,5 +1,5 @@
 [versions]
-agp = "8.6.0-alpha03"
+agp = "8.6.0-alpha04"
 androidx-activityCompose = "1.9.0"
 compose-plugin = "1.6.10"
 kotlin = "2.0.0"
