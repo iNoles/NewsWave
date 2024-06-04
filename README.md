@@ -1,7 +1,7 @@
 # News App 🗞
 [![GitHub license](https://img.shields.io/github/license/iNoles/News)](https://github.com/iNoles/News/blob/main/LICENSE)
 
-News App is a simple news app 🗞️ which uses [NewsAPI](https://newsapi.org/) to fetch top news headlines from the API. The main aim of this app is to be a leading example of how to build a Kotlin Multiplatform project targeting Android, iOS, Desktop.
+News App is a simple news app 🗞️ that uses [NewsAPI](https://newsapi.org/) to fetch top news headlines from the API. The main aim of this app is to be a leading example of how to build a Kotlin Multiplatform project targeting Android, iOS, and Desktop.
 
 * `/composeApp` is for code that will be shared across your Compose Multiplatform applications.
   It contains several subfolders:
@@ -13,15 +13,8 @@ News App is a simple news app 🗞️ which uses [NewsAPI](https://newsapi.org/)
 * `/iosApp` contains iOS applications. Even if you’re sharing your UI with Compose Multiplatform,
   you need this entry point for your iOS app. This is also where you should add SwiftUI code for your project.
 
-
 Learn more about [Kotlin Multiplatform](https://www.jetbrains.com/help/kotlin-multiplatform-dev/get-started.html),
 [Compose Multiplatform](https://github.com/JetBrains/compose-multiplatform/#compose-multiplatform),
 [Kotlin/Wasm](https://kotl.in/wasm/)…
-
-**Note:** Compose/Web is Experimental and may be changed at any time. Use it only for evaluation purposes.
-We would appreciate your feedback on Compose/Web and Kotlin/Wasm in the public Slack channel [#compose-web](https://slack-chats.kotlinlang.org/c/compose-web).
-If you face any issues, please report them on [GitHub](https://github.com/JetBrains/compose-multiplatform/issues).
-
-You can open the web application by running the `:composeApp:wasmJsBrowserDevelopmentRun` Gradle task.
 
 <img alt="NewsApp Main Page" height="450px" src="https://raw.githubusercontent.com/iNoles/News/main/screenshots/mac-desktop.png" />
