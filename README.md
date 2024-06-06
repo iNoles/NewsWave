@@ -1,11 +1,11 @@
 # News App 🗞
 [![GitHub license](https://img.shields.io/github/license/iNoles/News)](https://github.com/iNoles/News/blob/main/LICENSE)
 
-News App is a simple news application built using Jetpack Compose Multiplatform that utilizes the NewsAPI to fetch top news headlines from various sources. This app is designed to run seamlessly across Android, iOS, and Desktop platforms.
+News App is a simple news application built using Jetpack Compose Multiplatform that utilizes the NewsAPI to fetch top news headlines from various sources across seven categories. This app is designed to run seamlessly across Android, iOS, and Desktop platforms.
 
 ## Features
 - Fetches top news headlines from the NewsAPI.
-- Supports browsing news articles from various sources.
+- Supports browsing news articles from various sources across seven categories.
 - Clean and intuitive user interface.
 - Responsive design for Android, iOS, and Desktop platforms.
 
