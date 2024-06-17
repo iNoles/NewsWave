@@ -2,6 +2,7 @@ package com.jonathansteele.news
 
 import fuel.Fuel
 import fuel.get
+import fuel.serialization.toJson
 import kotlinx.coroutines.flow.flow
 import kotlinx.serialization.json.Json
 
@@ -17,7 +18,10 @@ fun fetchAllHeadlines(source: String) =
                         "apiKey" to BuildKonfig.NEWS_API_KEY,
                         "category" to source,
                     ),
-            ).json(json)
+            ).toJson(
+                json = json,
+                deserializationStrategy = News.serializer(),
+            )
         news.fold({
             emit(it)
         }, {

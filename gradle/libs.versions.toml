@@ -7,14 +7,11 @@ coil = "3.0.0-alpha06"
 fuel-kotlinx-serialization = "3.0.0-alpha03"
 kotlinx-datetime = "0.6.0"
 buildkonfig = "0.15.1"
-kotlinxCollectionsImmutable = "0.3.7"
 
 [libraries]
 androidx-activity-compose = { module = "androidx.activity:activity-compose", version.ref = "androidx-activityCompose" }
-coil-network = { group = "io.coil-kt.coil3", name = "coil-network-core", version.ref = "coil" }
 coil = { group = "io.coil-kt.coil3", name = "coil-compose", version.ref = "coil" }
 fuel-kotlinx-serialization = { group = "com.github.kittinunf.fuel", name = "fuel-kotlinx-serialization", version.ref = "fuel-kotlinx-serialization" }
-kotlinx-collections-immutable = { module = "org.jetbrains.kotlinx:kotlinx-collections-immutable", version.ref = "kotlinxCollectionsImmutable" }
 kotlinx-datetime = { group = "org.jetbrains.kotlinx", name = "kotlinx-datetime", version.ref = "kotlinx-datetime" }
 
 [plugins]

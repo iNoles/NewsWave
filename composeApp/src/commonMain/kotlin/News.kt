@@ -1,15 +1,13 @@
 package com.jonathansteele.news
 
 import androidx.compose.runtime.Immutable
-import kotlinx.collections.immutable.ImmutableList
 import kotlinx.datetime.Instant
 import kotlinx.serialization.Serializable
 
 @Serializable
 @Immutable
 data class News(
-    @Serializable(PersistentListSerializer::class)
-    val articles: ImmutableList<Article>?,
+    val articles: List<Article>?,
     val status: String,
     // ok
     val totalResults: Int?,

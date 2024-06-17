@@ -28,7 +28,6 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import kotlinx.collections.immutable.persistentListOf
 import kotlinx.coroutines.launch
 
 @Composable
@@ -117,7 +116,7 @@ fun ListBody(
     newsState: State<News?>,
     selectedArticle: MutableState<News.Article?>,
 ) {
-    val news = newsState.value?.articles ?: persistentListOf()
+    val news = newsState.value?.articles ?: emptyList()
     LazyColumn {
         items(news) { article ->
             NewsItem(article) {

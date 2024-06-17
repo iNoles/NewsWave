@@ -62,9 +62,7 @@ kotlin {
             implementation(compose.components.resources)
             implementation(libs.kotlinx.datetime)
             implementation(libs.fuel.kotlinx.serialization)
-            implementation(libs.kotlinx.collections.immutable)
             implementation(libs.coil)
-            implementation(libs.coil.network)
         }
         desktopMain.dependencies {
             implementation(compose.desktop.currentOs)
