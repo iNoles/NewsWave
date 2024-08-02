@@ -70,7 +70,8 @@ fun NewsDetailContent(
         ) {
             NewsIcon(
                 article,
-                iconModifier.heightIn(min = 180.dp)
+                iconModifier
+                    .heightIn(min = 180.dp)
                     .fillMaxWidth()
                     .clip(shape = MaterialTheme.shapes.medium),
             )

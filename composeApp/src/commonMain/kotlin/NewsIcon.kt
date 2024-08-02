@@ -16,7 +16,8 @@ fun NewsIcon(
     article.urlToImage?.let {
         AsyncImage(
             model =
-                ImageRequest.Builder(LocalPlatformContext.current)
+                ImageRequest
+                    .Builder(LocalPlatformContext.current)
                     .data(it)
                     .build(),
             contentDescription = null,
