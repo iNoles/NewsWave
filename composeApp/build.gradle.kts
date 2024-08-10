@@ -70,13 +70,13 @@ kotlin {
 }
 
 android {
-    namespace = "com.jonathansteele.news"
+    namespace = "com.jonathansteele.newswave"
     compileSdk = 35
 
     sourceSets["main"].manifest.srcFile("src/androidMain/AndroidManifest.xml")
 
     defaultConfig {
-        applicationId = "com.jonathansteele.news"
+        applicationId = "com.jonathansteele.newswave"
         minSdk = 26
         targetSdk = 35
         versionCode = 1
@@ -114,7 +114,7 @@ compose.desktop {
 }
 
 buildkonfig {
-    packageName = "com.jonathansteele.news"
+    packageName = "com.jonathansteele.newswave"
 
     val localPropsFile = rootProject.file("local.properties")
     val localProperties = Properties()
