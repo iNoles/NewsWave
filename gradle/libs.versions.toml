@@ -6,7 +6,7 @@ kotlin = "2.0.20"
 coil = "3.0.0-alpha10"
 fuel-kotlinx-serialization = "3.0.0-alpha03"
 kotlinx-datetime = "0.6.1"
-buildkonfig = "0.15.1"
+buildkonfig = "0.15.2"
 
 [libraries]
 androidx-activity-compose = { module = "androidx.activity:activity-compose", version.ref = "androidx-activityCompose" }
