@@ -1,5 +1,6 @@
 package com.jonathansteele.news
 
+import com.jonathansteele.newswave.BuildKonfig
 import fuel.Fuel
 import fuel.get
 import fuel.serialization.toJson
