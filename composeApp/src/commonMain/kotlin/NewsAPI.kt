@@ -9,6 +9,7 @@ import kotlinx.serialization.json.Json
 
 fun fetchAllHeadlines(source: String) =
     flow {
+        emit(UiState.Loading)
         val json = Json { ignoreUnknownKeys = true }
         val news =
             Fuel
@@ -25,8 +26,8 @@ fun fetchAllHeadlines(source: String) =
                     deserializationStrategy = News.serializer(),
                 )
         news.fold({
-            emit(it)
+            emit(UiState.Success(it))
         }, {
-            println(it.message)
+            emit(UiState.Error(it))
         })
     }

@@ -1,7 +1,7 @@
 [versions]
-agp = "8.10.1"
+agp = "8.11.0-rc02"
 androidx-activityCompose = "1.10.1"
-compose-plugin = "1.8.1"
+compose-plugin = "1.9.0-alpha02"
 kotlin = "2.1.21"
 coil = "3.2.0"
 fuel-kotlinx-serialization = "3.0.0-alpha04"
@@ -11,6 +11,7 @@ buildkonfig = "0.17.1"
 [libraries]
 androidx-activity-compose = { module = "androidx.activity:activity-compose", version.ref = "androidx-activityCompose" }
 coil = { group = "io.coil-kt.coil3", name = "coil-compose", version.ref = "coil" }
+coil-network-core = { group = "io.coil-kt.coil3", name = "coil-network-core", version.ref = "coil" }
 fuel-kotlinx-serialization = { group = "com.github.kittinunf.fuel", name = "fuel-kotlinx-serialization", version.ref = "fuel-kotlinx-serialization" }
 kotlinx-datetime = { group = "org.jetbrains.kotlinx", name = "kotlinx-datetime", version.ref = "kotlinx-datetime" }
 

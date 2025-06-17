@@ -1,5 +1,6 @@
 import com.codingfeline.buildkonfig.compiler.FieldSpec
 import org.jetbrains.compose.desktop.application.dsl.TargetFormat
+import org.jetbrains.kotlin.gradle.ExperimentalWasmDsl
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 import java.util.Properties
 
@@ -48,9 +49,7 @@ kotlin {
 
     sourceSets {
         val desktopMain by getting
-
         androidMain.dependencies {
-            // implementation(libs.compose.ui.tooling.preview)
             implementation(libs.androidx.activity.compose)
         }
         commonMain.dependencies {
@@ -58,10 +57,13 @@ kotlin {
             implementation(compose.foundation)
             implementation(compose.material3)
             implementation(compose.ui)
+            implementation("org.jetbrains.compose.material3:material3-window-size-class:1.9.0-alpha02")
+            implementation("org.jetbrains.compose.material:material-icons-core:1.7.3")
             implementation(compose.components.resources)
             implementation(libs.kotlinx.datetime)
             implementation(libs.fuel.kotlinx.serialization)
             implementation(libs.coil)
+            implementation(libs.coil.network.core)
         }
         desktopMain.dependencies {
             implementation(compose.desktop.currentOs)
@@ -71,14 +73,14 @@ kotlin {
 
 android {
     namespace = "com.jonathansteele.newswave"
-    compileSdk = 35
+    compileSdk = 36
 
     sourceSets["main"].manifest.srcFile("src/androidMain/AndroidManifest.xml")
 
     defaultConfig {
         applicationId = "com.jonathansteele.newswave"
         minSdk = 26
-        targetSdk = 35
+        targetSdk = 36
         versionCode = 1
         versionName = "1.0"
     }

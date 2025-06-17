@@ -3,7 +3,7 @@ package com.jonathansteele.news
 enum class TabState {
     GENERAL,
     BUSINESS,
-    ENTERAINMENT,
+    ENTERTAINMENT,
     HEALTH,
     SCIENCE,
     SPORTS,
