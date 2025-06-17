@@ -30,27 +30,29 @@ import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 
-val NewsyLightColors = lightColorScheme(
-    primary = Color(0xFF0A66C2),        // Bold blue for headlines & accents
-    onPrimary = Color.White,
-    secondary = Color(0xFFEF6C00),      // Orange for category tags, buttons
-    onSecondary = Color.White,
-    background = Color(0xFFFDFDFD),     // Clean white background
-    onBackground = Color(0xFF202124),  // Nearly black text for readability
-    surface = Color(0xFFF5F5F5),        // Card backgrounds
-    onSurface = Color(0xFF333333),
-)
+val NewsyLightColors =
+    lightColorScheme(
+        primary = Color(0xFF0A66C2), // Bold blue for headlines & accents
+        onPrimary = Color.White,
+        secondary = Color(0xFFEF6C00), // Orange for category tags, buttons
+        onSecondary = Color.White,
+        background = Color(0xFFFDFDFD), // Clean white background
+        onBackground = Color(0xFF202124), // Nearly black text for readability
+        surface = Color(0xFFF5F5F5), // Card backgrounds
+        onSurface = Color(0xFF333333),
+    )
 
-val NewsyDarkColors = darkColorScheme(
-    primary = Color(0xFF82B1FF),        // Soft blue for highlights
-    onPrimary = Color.Black,
-    secondary = Color(0xFFFFB74D),      // Warm amber for contrast
-    onSecondary = Color.Black,
-    background = Color(0xFF121212),     // Standard dark mode background
-    onBackground = Color(0xFFE0E0E0),
-    surface = Color(0xFF1E1E1E),
-    onSurface = Color(0xFFEEEEEE),
-)
+val NewsyDarkColors =
+    darkColorScheme(
+        primary = Color(0xFF82B1FF), // Soft blue for highlights
+        onPrimary = Color.Black,
+        secondary = Color(0xFFFFB74D), // Warm amber for contrast
+        onSecondary = Color.Black,
+        background = Color(0xFF121212), // Standard dark mode background
+        onBackground = Color(0xFFE0E0E0),
+        surface = Color(0xFF1E1E1E),
+        onSurface = Color(0xFFEEEEEE),
+    )
 
 @OptIn(ExperimentalMaterial3ExpressiveApi::class)
 @Composable
@@ -107,9 +109,10 @@ fun NewsList(selectedArticle: MutableState<News.Article?>) {
     val tabState = remember { mutableStateOf(TabState.GENERAL) }
     val scroll = rememberLazyListState()
     // Create a new Flow every time tabState changes
-    val newsFlow = remember(tabState.value) {
-        fetchAllHeadlines(source = tabState.value.name.lowercase())
-    }
+    val newsFlow =
+        remember(tabState.value) {
+            fetchAllHeadlines(source = tabState.value.name.lowercase())
+        }
 
     // Collect it as state for reactive UI
     val uiState = newsFlow.collectAsState(initial = UiState.Loading)

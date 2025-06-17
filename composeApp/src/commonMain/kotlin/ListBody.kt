@@ -21,7 +21,7 @@ import androidx.compose.ui.unit.dp
 fun ListBody(
     uiState: UiState<News?>,
     selectedArticle: MutableState<News.Article?>,
-    listState: LazyListState
+    listState: LazyListState,
 ) {
     when (uiState) {
         is UiState.Loading -> {
@@ -35,7 +35,7 @@ fun ListBody(
                 Text(
                     text = "Error: ${uiState.exception.message}",
                     style = MaterialTheme.typography.bodyLarge,
-                    color = MaterialTheme.colorScheme.error
+                    color = MaterialTheme.colorScheme.error,
                 )
             }
         }
@@ -47,7 +47,7 @@ fun ListBody(
                     Text(
                         "No articles available",
                         style = MaterialTheme.typography.bodyLarge,
-                        color = MaterialTheme.colorScheme.onSurfaceVariant
+                        color = MaterialTheme.colorScheme.onSurfaceVariant,
                     )
                 }
             } else {

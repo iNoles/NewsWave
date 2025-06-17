@@ -21,12 +21,13 @@ internal value class FuelNetworkClient(
         request: NetworkRequest,
         block: suspend (response: NetworkResponse) -> T,
     ): T {
-        val method = fuel.method(
-            url = request.url,
-            method = request.method,
-            body = request.body.toString(),
-            headers = request.headers.toHeaders()
-        )
+        val method =
+            fuel.method(
+                url = request.url,
+                method = request.method,
+                body = request.body.toString(),
+                headers = request.headers.toHeaders(),
+            )
         return block(method.toNetworkResponse())
     }
 }
@@ -41,6 +42,7 @@ private fun HttpResponse.toNetworkResponse(): NetworkResponse {
         delegate = this,
     )
 }
+
 private fun NetworkHeaders.toHeaders(): Map<String, String> {
     val headers = mutableMapOf<String, String>()
     for ((key, values) in asMap()) {

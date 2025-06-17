@@ -17,23 +17,25 @@ import coil3.request.crossfade
 @Composable
 fun NewsIcon(
     article: News.Article,
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
 ) {
     article.urlToImage?.let { imageUrl ->
         Surface(
             tonalElevation = 4.dp,
             shadowElevation = 6.dp,
             shape = MaterialTheme.shapes.medium,
-            modifier = modifier
+            modifier = modifier,
         ) {
             AsyncImage(
-                model = ImageRequest.Builder(LocalPlatformContext.current)
-                    .data(imageUrl)
-                    .crossfade(true)
-                    .build(),
+                model =
+                    ImageRequest
+                        .Builder(LocalPlatformContext.current)
+                        .data(imageUrl)
+                        .crossfade(true)
+                        .build(),
                 contentDescription = null,
                 contentScale = ContentScale.Crop, // Better for showing images at all sizes
-                modifier = Modifier.fillMaxSize()
+                modifier = Modifier.fillMaxSize(),
             )
         }
     }

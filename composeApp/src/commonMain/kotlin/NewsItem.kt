@@ -24,26 +24,27 @@ fun NewsItem(
         tonalElevation = 6.dp,
         shadowElevation = 10.dp,
         shape = MaterialTheme.shapes.medium,
-        onClick = { onArticleClick(article) }
+        onClick = { onArticleClick(article) },
     ) {
         Column(modifier = Modifier.padding(16.dp)) {
             NewsIcon(
                 article = article,
-                modifier = Modifier
-                    .padding(horizontal = 16.dp)
-                    .fillMaxWidth()
-                    .height(90.dp)
+                modifier =
+                    Modifier
+                        .padding(horizontal = 16.dp)
+                        .fillMaxWidth()
+                        .height(90.dp),
             )
             Text(
                 text = article.title,
                 style = MaterialTheme.typography.headlineSmall,
-                modifier = Modifier.padding(top = 8.dp)
+                modifier = Modifier.padding(top = 8.dp),
             )
             article.description?.let {
                 Text(
                     text = it,
                     style = MaterialTheme.typography.bodyMedium,
-                    modifier = Modifier.padding(top = 4.dp)
+                    modifier = Modifier.padding(top = 4.dp),
                 )
             }
         }

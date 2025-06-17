@@ -29,7 +29,7 @@ actual fun ShareURL(article: News.Article) {
     }) {
         Icon(
             imageVector = Icons.Default.Share,
-            contentDescription = "Share URL"
+            contentDescription = "Share URL",
         )
     }
 

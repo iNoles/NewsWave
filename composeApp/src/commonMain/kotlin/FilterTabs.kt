@@ -26,9 +26,10 @@ fun FilterTabs(
 
     Surface(
         tonalElevation = 4.dp,
-        modifier = Modifier
-            .fillMaxWidth()
-            .padding(vertical = 8.dp)
+        modifier =
+            Modifier
+                .fillMaxWidth()
+                .padding(vertical = 8.dp),
     ) {
         SecondaryScrollableTabRow(selectedTabIndex = TabState.entries.indexOf(tabState.value)) {
             TabState.entries.forEach { tab ->

@@ -3,7 +3,6 @@ package com.jonathansteele.news
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
@@ -29,7 +28,7 @@ import kotlinx.datetime.Instant
 fun NewsDetailView(
     article: News.Article?,
     selectedArticle: MutableState<News.Article?>,
-    navigationEnabled: Boolean = false
+    navigationEnabled: Boolean = false,
 ) {
     Scaffold(
         topBar = {
@@ -64,41 +63,43 @@ fun NewsDetailView(
 fun NewsDetailContent(
     article: News.Article?,
     modifier: Modifier = Modifier,
-    shape: Shape = MaterialTheme.shapes.medium
+    shape: Shape = MaterialTheme.shapes.medium,
 ) {
     article?.let {
         Surface(
             modifier = modifier.padding(16.dp),
             tonalElevation = 4.dp,
-            shape = shape
+            shape = shape,
         ) {
             Column(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(16.dp)
+                modifier =
+                    Modifier
+                        .fillMaxWidth()
+                        .padding(16.dp),
             ) {
                 NewsIcon(
                     article = article,
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .height(180.dp)
-                        .clip(shape)
+                    modifier =
+                        Modifier
+                            .fillMaxWidth()
+                            .height(180.dp)
+                            .clip(shape),
                 )
                 Text(
                     text = article.title,
                     style = MaterialTheme.typography.headlineSmall,
-                    modifier = Modifier.padding(top = 8.dp)
+                    modifier = Modifier.padding(top = 8.dp),
                 )
                 Text(
                     text = "By ${article.author}",
                     style = MaterialTheme.typography.bodyMedium,
-                    modifier = Modifier.padding(vertical = 4.dp)
+                    modifier = Modifier.padding(vertical = 4.dp),
                 )
                 NewsDate(article.publishedAt)
                 Text(
                     text = article.description ?: "",
                     style = MaterialTheme.typography.bodyLarge,
-                    modifier = Modifier.padding(top = 8.dp)
+                    modifier = Modifier.padding(top = 8.dp),
                 )
             }
         }
