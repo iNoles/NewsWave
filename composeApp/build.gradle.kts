@@ -56,7 +56,7 @@ kotlin {
             implementation(compose.foundation)
             implementation(compose.material3)
             implementation(compose.ui)
-            implementation("org.jetbrains.compose.material3:material3-window-size-class:1.9.0-alpha03")
+            implementation("org.jetbrains.compose.material3:material3-window-size-class:1.9.0")
             implementation("org.jetbrains.compose.material:material-icons-core:1.7.3")
             implementation(compose.components.resources)
             implementation(libs.kotlinx.datetime)
