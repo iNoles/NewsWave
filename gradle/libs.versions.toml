@@ -1,6 +1,6 @@
 [versions]
 agp = "9.0.0"
-androidx-activityCompose = "1.12.3"
+androidx-activityCompose = "1.12.4"
 compose-plugin = "1.10.1"
 kotlin = "2.3.10"
 coil = "3.3.0"
