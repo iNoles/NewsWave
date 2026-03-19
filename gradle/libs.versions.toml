@@ -1,7 +1,7 @@
 [versions]
 agp = "9.1.0"
 androidx-activityCompose = "1.13.0"
-compose-plugin = "1.10.2"
+compose-plugin = "1.10.3"
 kotlin = "2.3.20"
 coil = "3.4.0"
 fuel-kotlinx-serialization = "3.0.0-alpha04"
