@@ -2,7 +2,7 @@
 agp = "9.2.1"
 androidx-activityCompose = "1.13.0"
 compose-plugin = "1.11.1"
-kotlin = "2.3.21"
+kotlin = "2.4.0"
 coil = "3.4.0"
 fuel-kotlinx-serialization = "3.0.0-alpha04"
 kotlinx-datetime = "0.8.0-0.6.x-compat"
